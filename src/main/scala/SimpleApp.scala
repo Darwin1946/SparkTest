@@ -4,6 +4,8 @@
   import org.apache.spark.SparkContext._
   import org.apache.spark.SparkConf
 
+  import java.io.File
+
   object SimpleApp {
     def myfunc[T](iter: Iterator[T]) : Iterator[(T, T)] = {
       var res = List[(T, T)]()
@@ -17,7 +19,9 @@
     }
 
     def main(args: Array[String]) {
-      val logFile = "D:/Desktop/JaneEyre.txt"
+      val file = new File("")
+      val project_path = file.getAbsolutePath()
+      val logFile = project_path+"/data/JaneEyre.txt"
       val conf = new SparkConf().setAppName("Simple Application").setMaster("local")
       val sc = new SparkContext(conf)
       val logData = sc.textFile(logFile, 2).cache()
