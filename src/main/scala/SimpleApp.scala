@@ -19,6 +19,7 @@
     }
 
     def main(args: Array[String]) {
+
       val file = new File("")
       val project_path = file.getAbsolutePath()
       val logFile = project_path+"/data/JaneEyre.txt"
@@ -33,7 +34,8 @@
 
       val a = sc.parallelize(1 to 9, 3)
       val b = a.mapPartitions(myfunc).foreach(println)
-
     }
+
+
   }
 
